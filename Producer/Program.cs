@@ -14,10 +14,23 @@ channel.QueueDeclare(
     autoDelete: false,
     arguments: null);
 
-var message = "This is my first message";
+var messageId = 1;
 
-var body = Encoding.UTF8.GetBytes(message);
+var random = new Random();
 
-channel.BasicPublish("", "letterbox", null, body);
+while (true)
+{
+    var message = $"Sending Message Id: {messageId}";
 
-Console.WriteLine($"Send message: {message}");
+    var body = Encoding.UTF8.GetBytes(message);
+
+    channel.BasicPublish("", "letterbox", null, body);
+
+    Console.WriteLine($"Send message: {message}");
+
+    var waitTime = random.Next(1, 4);
+
+    Task.Delay(TimeSpan.FromSeconds(waitTime)).Wait();
+
+    messageId++;
+}

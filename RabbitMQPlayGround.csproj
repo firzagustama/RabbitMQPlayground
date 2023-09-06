@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="Consumer\Consumer.csproj" />
+    <ProjectReference Include="Producer\Producer.csproj" />
+  </ItemGroup>
+
 </Project>
