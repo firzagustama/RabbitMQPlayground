@@ -17,7 +17,7 @@ consumer.Received += (model, ea) =>
 {
     var body = ea.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
-    Console.WriteLine($"FirstConsumer - Received new message: {message}");
+    Console.WriteLine($"SecondConsumer - Received new message: {message}");
 };
 
 channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
